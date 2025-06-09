@@ -73,7 +73,7 @@ const Home = () => {
         {/* Password Display */}
         <div
           ref={passwordRef}
-          className={`overflow-x-auto px-3 text-xs sm:text-lg font-mono flex justify-center items-center rounded-full border border-white/15 break-words min-h-[2.5rem] transition-all duration-200 ${
+          className={`px-5 py-3 h-auto text-xs sm:text-lg font-mono flex justify-center items-center rounded-full border border-white/15 break-words min-h-[2.5rem] transition-all duration-200 ${
             password.startsWith(":")
               ? "bg-red-950 text-red-300"
               : "bg-white/10 text-white"
