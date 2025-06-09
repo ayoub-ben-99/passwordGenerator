@@ -15,7 +15,10 @@
     --foreground: #ededed;
   }
 }
-
+html::selection {
+  background: var(--p-light);
+  color: var(--p-dark);
+}
 body {
   background: var(--background);
   color: var(--foreground);

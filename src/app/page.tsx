@@ -58,22 +58,22 @@ const Home = () => {
   }, []);
 
   return (
-    <header className="w-full min-h-screen flex justify-center items-center flex-col px-2 py-6 sm:px-4 sm:py-10 relative">
+    <header className="relative w-full min-h-screen flex justify-center items-center flex-col px-2 py-6 sm:px-4 sm:py-10">
       {/* Blur backgrounds */}
-      <div className="bg-[var(--p-d)] h-20 w-20 sm:h-32 sm:w-32 absolute left-1/3 top-1/2 -translate-1/2 blur-[60px]" />
+      <div className="bg-[var(--p-d)] h-20 w-20 sm:h-32 sm:w-32 absolute left-1/2 top-1/2 -translate-1/2 blur-[60px]" />
       <div className="bg-[var(--p-light)] h-20 w-20 sm:h-32 sm:w-32 absolute left-1/2 top-1/3 -translate-1/2 blur-[60px]" />
       <div className="bg-[var(--p-dark)] h-20 w-20 sm:h-32 sm:w-32 absolute left-1/2 top-1/2 -translate-1/2 blur-[60px]" />
 
       <main className="w-full max-w-sm mx-auto p-3 sm:p-5 bg-black/10 backdrop-blur-xl border border-white/15 rounded-xl shadow-2xl space-y-4 z-10">
-        <h1 className="text-base sm:text-2xl uppercase font-bold text-center text-[var(--p-light)]">
-          <i className="ri-key-2-fill text-xl sm:text-3xl text-[var(--p-d)]"></i>{" "}
+        <h1 className="text-xl sm:text-2xl uppercase font-bold text-center text-[var(--p-light)]">
+          <i className="ri-key-2-fill text-2xl sm:text-4xl text-[var(--p-d)]"></i>{" "}
           Password Generator
         </h1>
 
         {/* Password Display */}
         <div
           ref={passwordRef}
-          className={`text-xs sm:text-lg font-mono p-2 rounded-full border border-white/15 text-center break-words min-h-[2.5rem] transition-all duration-200 ${
+          className={`overflow-x-auto px-3 text-xs sm:text-lg font-mono flex justify-center items-center rounded-full border border-white/15 break-words min-h-[2.5rem] transition-all duration-200 ${
             password.startsWith(":")
               ? "bg-red-950 text-red-300"
               : "bg-white/10 text-white"
@@ -167,21 +167,22 @@ const Home = () => {
             <div
               key={idx}
               onClick={() => option.setter(!option.state)}
-              className={`cursor-pointer text-[10px] sm:text-sm text-center p-1.5 sm:p-2.5 rounded-full font-medium transition-all duration-200 ${
+              className={`cursor-pointer text-[10px] sm:text-sm text-center p-1.5 sm:p-2.5 rounded-full font-medium transition-all duration-200 active:scale-95${
                 option.state
-                  ? "border-2 border-[var(--p-d)] text-white backdrop-blur-2xl bg-white/1"
-                  : "border-2 border-transparent bg-white/5 text-gray-300/50 hover:text-gray-200"
+                  ? "text-white backdrop-blur-2xl bg-gradient-to-bl bg-[var(--p-d)] to-[var(--p-dark)]"
+                  : " bg-white/5 text-gray-300/50 hover:text-gray-200"
               }`}
             >
-              <h1>{option.label}</h1>
-              <h1>{option.style}</h1>
+              <h1 className="font-medium">
+                {option.label} : <span>{option.style}</span>
+              </h1>
             </div>
           ))}
         </div>
       </main>
 
       {/* GitHub link */}
-      <div className="mt-4 w-full max-w-[220px] bg-white/1 border border-white/15 rounded-full flex justify-center items-center py-2 text-base">
+      <div className="absolute z-50 mt-4 top-10/11 left-1/5 -translate-1/2 bg-white/5 px-2 border border-white/15 rounded-full flex justify-center items-center py-2 text-base">
         <Link
           href="https://github.com/ayoub-ben-99"
           target="_blank"
@@ -192,10 +193,10 @@ const Home = () => {
         <Link
           href="https://a-code01.vercel.app"
           target="_blank"
-          className="px-3"
+          className="px-3 font-bold"
         >
           {" "}
-          a code.
+          a code <span className="text-[var(--p-d)] text-xl">.</span>
         </Link>
       </div>
     </header>
